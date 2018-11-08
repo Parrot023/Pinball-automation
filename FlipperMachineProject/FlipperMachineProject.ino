@@ -1,3 +1,8 @@
+//delays
+//unsigned integer can max be 64000
+const unsigned int max_time = 60000;
+const unsigned int delay_time = 30000;
+
 //sensor pins
 const int sensorPin1 = 2;
 const int sensorPin2 = 3;
@@ -14,10 +19,7 @@ const int ledPin2 = 4;
 volatile unsigned int left_flipper_time_left;
 volatile unsigned int right_flipper_time_left;
 
-//delays
-//unsigned integer can max be 64000
-const unsigned int max_time = 60000;
-const unsigned int delay_time = 30000;
+
 
 
 void setup() {
