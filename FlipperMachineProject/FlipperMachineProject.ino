@@ -1,8 +1,9 @@
 //delays
 //unsigned integer can max be 64000
-const unsigned int max_time = 60000;
-const unsigned int delay_time = 30000;
-
+const unsigned int max_time = 30000;
+//Note delay cant be 0 (don't know why)
+const unsigned int delay_time = 1;
+//time since trig
 //sensor pins
 const int sensorPin1 = 2;
 const int sensorPin2 = 3;
@@ -54,7 +55,10 @@ void loop() {
   //if -flipper_time_left = equall to 0 turn off
 
   if (right_flipper_time_left == max_time - delay_time) {
+    //if time since trig is over ____ do this
     digitalWrite(ledPin1, HIGH);
+    cli(); //disables interrupts
+
   }
   
   if (right_flipper_time_left == 0) {
@@ -63,7 +67,9 @@ void loop() {
 
   if (right_flipper_time_left > 0){
     right_flipper_time_left--;
+    sei(); //enables interrupts
   }
+  
 
 
   //left flipper
@@ -71,6 +77,7 @@ void loop() {
   
    if (left_flipper_time_left == max_time - delay_time) {
     digitalWrite(ledPin2, HIGH);
+    cli(); //disables interrupts
   }
   
   if (left_flipper_time_left == 0) {
@@ -79,25 +86,9 @@ void loop() {
 
   if (left_flipper_time_left > 0){
     left_flipper_time_left--;
+    sei(); //enables interrupts
   }
 
-
-// without delay  
-//  if (right_flipper_time_left > 0){
-//    digitalWrite(ledPin1, HIGH);
-//    right_flipper_time_left--;
-//  } else {
-//    digitalWrite(ledPin1, LOW);
-//  }
-
-//  //left flipper
-//  if (left_flipper_time_left > 0){
-//    digitalWrite(ledPin2, HIGH);
-//    left_flipper_time_left--;
-//  } else {
-//    digitalWrite(ledPin2, LOW);
-//  }
-//
 } //end of main loop
     
  
@@ -105,9 +96,9 @@ void loop() {
 //function which is called by sensorPin1 interrupt
 void right_trig_interrupt() {
   count++;
-  right_flipper_time_left = max_time;
-  
+  right_flipper_time_left = max_time;  
 }
+
 //function which is called by sensorPin2 interrupt
 void left_trig_interrupt() {
   count++;
