@@ -17,8 +17,8 @@ const int ledPin1 = 5;
 const int ledPin2 = 4;
 
 //right and left trigger time left counting from max_time
-volatile unsigned int left_flipper_time_left;
-volatile unsigned int right_flipper_time_left;
+volatile boolean left_trig;
+volatile boolean right_trig;
 
 
 
@@ -42,65 +42,49 @@ void setup() {
 
 void loop() {
 
-  // prints number of sensor activations if changed
+  // prints number of sensor activations if changed--------------->
   if (prev_count != count) {
     Serial.println(count);
     prev_count = count;
   }
 
-  //right flipper
-  //with delay
-  //if -flipper_time_left = higher than 0 countdown from max_time
-  //if -flipper_time_left = equal to max_time - delay_time: turn on
-  //if -flipper_time_left = equall to 0 turn off
 
-  if (right_flipper_time_left == max_time - delay_time) {
-    //if time since trig is over ____ do this
-    digitalWrite(ledPin1, HIGH);
-    cli(); //disables interrupts
 
+  
+  //right_trig----------------------------------------------------->
+  
+    if (digitalRead(sensorPin1) == HIGH) {
+      digitalWrite(ledPin1, HIGH);
+      delay(100);
+      digitalWrite(ledPin1, LOW);
+      
+      delay(1000);
   }
   
-  if (right_flipper_time_left == 0) {
-    digitalWrite(ledPin1, LOW);
-  }
-
-  if (right_flipper_time_left > 0){
-    right_flipper_time_left--;
-    sei(); //enables interrupts
-  }
-  
-
-
-  //left flipper
+  //left flipper-------------------------------------------------->
   //with delay 
   
-   if (left_flipper_time_left == max_time - delay_time) {
-    digitalWrite(ledPin2, HIGH);
-    cli(); //disables interrupts
+   if (digitalRead(sensorPin2) == HIGH) {
+     digitalWrite(ledPin2, HIGH);
+     delay(100);
+     digitalWrite(ledPin2, LOW);
+    
+     delay(1000);
   }
+
   
-  if (left_flipper_time_left == 0) {
-    digitalWrite(ledPin2, LOW);
-  }
-
-  if (left_flipper_time_left > 0){
-    left_flipper_time_left--;
-    sei(); //enables interrupts
-  }
-
 } //end of main loop
     
  
 
-//function which is called by sensorPin1 interrupt
+//function which is called by sensorPin1 interrupt----------------->
 void right_trig_interrupt() {
   count++;
-  right_flipper_time_left = max_time;  
+  right_trig = true;  
 }
 
-//function which is called by sensorPin2 interrupt
+//function which is called by sensorPin2 interrupt----------------->
 void left_trig_interrupt() {
   count++;
-  left_flipper_time_left = max_time;
+  left_trig = true;
 }
