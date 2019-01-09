@@ -1,48 +1,38 @@
 //delays
-//unsigned integer can max be 64000
-const unsigned int max_time = 30000;
-//Note delay cant be 0 (don't know why)
-const unsigned int delay_time = 1;
-//time since trig
+const int flipperUpTime = 100;
+const int flipperWaitTime = 1000;
+
 //sensor pins
-const int sensorPin1 = 2;
-const int sensorPin2 = 3;
+const int rightsensor = 2;
+const int leftsensor = 3;
 
 //counting every time the sensors are activated
 int count = 0;
 int prev_count;
 
-//led pins
-const int ledPin1 = 5;
-const int ledPin2 = 4;
-
-//right and left trigger time left counting from max_time
-volatile boolean left_trig;
-volatile boolean right_trig;
+//flipper pins
+const int rightflipper = 5;
+const int leftflipper = 4;
 
 
 
 
-void setup() {
+void setup() { //------------------------------------------------------------------------------------------------------------>
   
   //declare pin modes
-  pinMode(sensorPin1, INPUT);
-  pinMode(ledPin1, OUTPUT);
-  pinMode(sensorPin2, INPUT);
-  pinMode(ledPin2, OUTPUT);
+  pinMode(rightsensor, INPUT);
+  pinMode(rightflipper, OUTPUT);
   
-  //attaches sensorPin as an interrupt, and calls the function sensorHigh, when sensorPin becomes HIGH
-  attachInterrupt(digitalPinToInterrupt(sensorPin1), right_trig_interrupt, RISING);
-  attachInterrupt(digitalPinToInterrupt(sensorPin2), left_trig_interrupt, RISING);
+  pinMode(leftsensor, INPUT);
+  pinMode(leftflipper, OUTPUT);
   
   //starts the serial communication
   Serial.begin(9600);
 
 }
 
-void loop() {
+void loop() { //--------------------------------------------------------------------------------------------------------------->
 
-  // prints number of sensor activations if changed--------------->
   if (prev_count != count) {
     Serial.println(count);
     prev_count = count;
@@ -51,40 +41,49 @@ void loop() {
 
 
   
-  //right_trig----------------------------------------------------->
+  //right flipper ------------------------------------------------------------------------------->
   
-    if (digitalRead(sensorPin1) == HIGH) {
-      digitalWrite(ledPin1, HIGH);
-      delay(100);
-      digitalWrite(ledPin1, LOW);
+    if (digitalRead(rightsensor) == HIGH) {
+
+      //activate flipper
+      digitalWrite(rightflipper, HIGH);
       
-      delay(1000);
+      //this delay is needed by the flipper, if this delay wasnt here the flipper would not flip
+      delay(flipperUpTime);
+      
+      //deactivate flipper
+      digitalWrite(rightflipper, LOW);
+      
+      //delay to prevent the flipper from activating itself,
+      //this might have to be redone in the future for support for multiple sensors per flipper
+      //maybe using interrupts again
+      delay(flipperWaitTime);
+
+      //counts number of sensor activations
+      count ++;
   }
   
-  //left flipper-------------------------------------------------->
-  //with delay 
+  //left flipper --------------------------------------------------------------------------------->
   
-   if (digitalRead(sensorPin2) == HIGH) {
-     digitalWrite(ledPin2, HIGH);
-     delay(100);
-     digitalWrite(ledPin2, LOW);
+   if (digitalRead(leftsensor) == HIGH) {
     
-     delay(1000);
+     //activates flipper
+     digitalWrite(leftflipper, HIGH);
+     
+     //this delay is needed by the flipper, if this delay wasnt here the flipper would not flip 
+     delay(flipperUpTime);
+     
+     //deactivate flipper
+     digitalWrite(leftflipper, LOW);
+
+     //delay to prevent the flipper from activating itself,
+     //this might have to be redone in the future for support for multiple sensors per flipper
+     //maybe using interrupts again
+     delay(flipperWaitTime);
+
+     //counts number of sensor activations
+     count++;
   }
 
   
-} //end of main loop
-    
- 
-
-//function which is called by sensorPin1 interrupt----------------->
-void right_trig_interrupt() {
-  count++;
-  right_trig = true;  
-}
-
-//function which is called by sensorPin2 interrupt----------------->
-void left_trig_interrupt() {
-  count++;
-  left_trig = true;
-}
+} //end of main loop --------------------------------------------------------------------------------------------------------------------->
