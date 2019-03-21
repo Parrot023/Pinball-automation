@@ -1,4 +1,5 @@
-This project is about turning an old classic flipper machince, into an automatic flipper beast
+This project is about turning an old classic pinball machince, into an automatic flipper beast. It's done by ball detecting sensors
+above the flippers, and an Arduino (Nano) activating the flippers via relays.
 
 
 3D print info:
