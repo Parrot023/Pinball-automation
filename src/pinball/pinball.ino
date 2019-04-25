@@ -1,13 +1,9 @@
-//info 
-//diodes: 1N914
-//
-
-
-
+//A wonderfull program by Andreas J.
+//the goal is to read the output from a sensor and activate a releay
 
 //delays
 const int flipperUpTime = 100;
-const int flipperWaitTime = 1000;
+const int flipperWaitTime = 500;
 
 //sensor pins
 const int rightsensor = 2;
@@ -33,6 +29,9 @@ void setup() { //---------------------------------------------------------------
   pinMode(leftsensor, INPUT);
   pinMode(leftflipper, OUTPUT);
 
+  digitalWrite(rightsensor, LOW);
+  digitalWrite(leftsensor, LOW);
+
   //starts the serial communication
   Serial.begin(9600);
 
@@ -46,15 +45,13 @@ void loop() { //----------------------------------------------------------------
   }
 
 
-
-
   //right flipper ------------------------------------------------------------------------------->
-
+    Serial.println(digitalRead(rightsensor));
     if (digitalRead(rightsensor) == HIGH) {
-
+        
+      Serial.println(digitalRead("ACTIVE"));
       //activate flipper
       digitalWrite(rightflipper, HIGH);
-      Serial.println("sjifhiojhfjih");
 
       //this delay is needed by the flipper, if this delay wasnt here the flipper would not flip
       delay(flipperUpTime);
@@ -72,27 +69,6 @@ void loop() { //----------------------------------------------------------------
   }
 
   //left flipper --------------------------------------------------------------------------------->
-
-   if (digitalRead(leftsensor) == HIGH) {
-
-     //activates flipper
-     digitalWrite(leftflipper, HIGH);
-     Serial.println("ksjdhgksjdhgkjh");
-
-     //this delay is needed by the flipper, if this delay wasnt here the flipper would not flip
-     delay(flipperUpTime);
-
-     //deactivate flipper
-     digitalWrite(leftflipper, LOW);
-
-     //delay to prevent the flipper from activating itself,
-     //this might have to be redone in the future for support for multiple sensors per flipper
-     //maybe using interrupts again
-     delay(flipperWaitTime);
-
-     //counts number of sensor activations
-     count++;
-  }
 
 
 } //end of main loop ----------------------------------------------------------------------------------------------------------->
