@@ -26,4 +26,9 @@ Problem: Tobias ruined one of the sensor by placing it uncorrectly in the multi 
 SOLVED the multi sensor board now works. we concluded that a pull down resistor is needed the problem did not occure with just one sensor becuase 
 with only one sensor there were no diode in the way. with the diodes, when no power is coming from the sensor output the pin were just floating April 25
 Note: the atmega chips only supports pull up resistors April 25 
-//To do: Put pull down resistor on multi sensor board April 25
+To do: Put pull down resistor on multi sensor board April 25
+
+May 2nd:
+Almost done with multi sensor board
+No problems
+To do: Put pull down resistor on multi sensor board
