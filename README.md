@@ -5,30 +5,43 @@ This project is about turning an old classic pinball machince, into an automatic
 above the flippers, and an Arduino (Nano) activating the flippers via relays.
 
 
-## 3D print info:
 
-Body depth: 10 mm.
-Body height: 7 mm.
-Body lenght: is defined by number number of repeats.
+## Usefull information
 
-Divider (the wall between each sensor): 3 mm.
+### 3D print info:
 
-Screw hole size: 3 mm.
-
-Cut out length (for sensor): 11 mm.
-Cut out height (for sensor): 5 mm.
+**Sensor holder**
 
 
+- Body depth: 10 mm.
+- Body height: 7 mm.
+- Body lenght: is defined by number number of repeats.
+
+- Divider (the wall between each sensor): 3 mm.
+
+- Screw hole size: 3 mm.
+
+- Cut out length (for sensor): 11 mm.
+- Cut out height (for sensor): 5 mm.
+
+### Notes
+
+- The atmega chips only supports internal pull up resistors not pull down
+
+- Diodes used: 1N914
+
+- Arduino used: Arduino nano
 
 ## To do
 
-- Put pull down resistor on multi sensor board
+- ~~Put pull down resistor on multi sensor board~~
+- Find a solution so that you dont accidentally place sensor incorrectly into multi sensor board
 
 
 ## Log:
 
 
-## May 9th
+### May 9th
 
 - Finished multi sensor board
 - Put pull down resistor on multi sensor board
@@ -43,26 +56,19 @@ Cut out height (for sensor): 5 mm.
 
 ### April 25th
 
-Diodes: 1N914
-
 - Single sensor works.
 
+
+**PROBLEMS:**
+
+- Tobias ruined one of the sensors by placing it incorrectly in the multi sensor board. This problem needs to be solved.
 - Multi sensor board with diodes dosnt work (Symptom: swithes on and off relay when sensor is not active).
-
-
-**PROBLEM:**
-
-Tobias ruined one of the sensor by placing it uncorrectly in the multi sensor board. This problem needs to be solved.
-
 
 **SOLVED:**
 
-The multi sensor board now works. We concluded that a pull down resistor is needed, the problem did not occure with just one sensor because,
+- The multi sensor board now works. We concluded that a pull down resistor is needed, the problem did not occure with just one sensor because,
 with only one sensor there were no diode in the way. with the diodes, when no power was coming from the sensor output, the pin was just floating
+- We still need to find a solution so that you dont accidentally place the sensor into the multi sensor board incorrectly
 
-
-**Note:**
-
-The atmega chips only supports internal pull up resistors not pull down
 
 
