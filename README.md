@@ -18,15 +18,36 @@ Screw hole size: 3 mm.
 Cut out length (for sensor): 11 mm.
 Cut out height (for sensor): 5 mm.
 
+
+
+## To do
+
+- Put pull down resistor on multi sensor board
+
+
 ## Log:
 
-### April 25th:
+
+## May 9th
+
+- Finished multi sensor board
+- Put pull down resistor on multi sensor board
+- multi sensor board is now fully functional
+- We had a problem with the multi sensor board but it was due to a loose connection
+- Openscad files for sensor holder and breadboard holder were added to the repository
+
+### May 2nd
+
+- Almost done with multi sensor board
+- No problems
+
+### April 25th
 
 Diodes: 1N914
 
-Single sensor works.
+- Single sensor works.
 
-Multi sensor board with diodes dosnt work (Symptom: swithes on and off relay when sensor is not active).
+- Multi sensor board with diodes dosnt work (Symptom: swithes on and off relay when sensor is not active).
 
 
 **PROBLEM:**
@@ -44,18 +65,4 @@ with only one sensor there were no diode in the way. with the diodes, when no po
 
 The atmega chips only supports internal pull up resistors not pull down
 
-
-**To do:**
-
-- Put pull down resistor on multi sensor board
-
-### May 2nd:
-Almost done with multi sensor board
-
-No problems
-
-
-**To do:** 
-
-- Put pull down resistor on multi sensor board
 
