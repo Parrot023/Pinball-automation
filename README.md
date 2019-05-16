@@ -35,10 +35,32 @@ above the flippers, and an Arduino (Nano) activating the flippers via relays.
 ## To do
 
 - ~~Put pull down resistor on multi sensor board~~
-- Find a solution so that you dont accidentally place sensor incorrectly into multi sensor board
+- Find a solution so that you dont accidentally place sensor incorrectly
+into multi sensor board
+- Find a solution to the sensors activating each other
 
 
 ## Log:
+
+
+### May 16th
+
+- Printed 2 sensor holders
+
+- Cut out a new piece of tree to hold the multi sensor board on the
+pinball machine and drilled holds for the multi sensor board.
+
+- Added Line sensor (Model number: TCRT500) datasheet to repo
+
+**PROBLEM:**
+- We found the sensor activating each while testing it on pinball
+we are working on a 3D printed object that blocks the light from one sensor
+reaching another sensor on the multi sensor board.
+- Tobias found the datasheet for the line sensors.
+  - the sensors are rated for a distance between 0.2 mm - 15 mm.
+  - Their peak distance is 2.5 mm.
+  - Our sensors are 33 mm from the playfield of the pinball machine
+
 
 
 ### May 9th
