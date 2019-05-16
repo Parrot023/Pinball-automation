@@ -32,13 +32,15 @@ above the flippers, and an Arduino (Nano) activating the flippers via relays.
 
 - Arduino used: Arduino nano
 
+- Sensors used: TCRT5000 Module
+
 ## To do
 
 - ~~Put pull down resistor on multi sensor board~~
 - Find a solution so that you dont accidentally place sensor incorrectly
 into multi sensor board
 - Find a solution to the sensors activating each other
-
+- Try out other IR senors (Maybe they are rated for longer distances)
 
 ## Log:
 
@@ -50,8 +52,10 @@ into multi sensor board
 - Cut out a new piece of tree to hold the multi sensor board on the
 pinball machine and drilled holds for the multi sensor board.
 
-- Added Line sensor (Model number: TCRT5000) datasheet to repo
-- [TCRT5000 Datasheet](https://www.vishay.com/docs/83760/tcrt5000.pdf) 
+- Added Line sensor (Model number: TCRT5000) datasheet to link to README
+- [TCRT5000 Datasheet](https://www.vishay.com/docs/83760/tcrt5000.pdf)
+
+- Added image of line sensor to repo 
 
 **PROBLEM:**
 - We found the sensor activating each while testing it on pinball
