@@ -41,17 +41,36 @@ above the flippers, and an Arduino (Nano) activating the flippers via relays.
 into multi sensor board
 - Find a solution to the sensors activating each other
 - Try out other IR senors (Maybe they are rated for longer distances)
+- Add OpenScad files for sensor tube
+- Make another multi sensor board. With only 4 sensors.
+- Make the other side of the pinball machine automatic.
 
 ## Log:
 
 
+### June 6th
+
+- Printed out 5 more sensor tubes.
+- We decided to stick with 4 sensors on one side. To avoid a problem where
+the sensors get stuck. These sensor have sensor tubes on them.
+- We got it working with 4 sensors on the board. 
+**Important**
+These 4 sensor work better with sensor tubes on them.
+
+**PROBLEM:**
+- We could not make 7 sensor work together. They keep activating each other
+We think the cause can be something called hysteresis (google hysteresis
+comparator if you dont know what it is).
+
 ### May 16th
 
-- Printed 2 sensor holders
+- Printed 2 sensor tubes (sensor tubes are small rectangular 3d printed objects
+which sit on the sensors led module. The goal of the tube is to prevent light
+from one sensor reaching another).
+OpenScad files for the sensor tubes are coming soon.
 
 - Cut out a new piece of tree to hold the multi sensor board on the
 pinball machine and drilled holds for the multi sensor board.
-
 - Added Line sensor (Model number: TCRT5000) datasheet to link to README
 - [TCRT5000 Datasheet](https://www.vishay.com/docs/83760/tcrt5000.pdf)
 
