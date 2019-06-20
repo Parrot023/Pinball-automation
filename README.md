@@ -47,6 +47,26 @@ into multi sensor board
 
 ## Log:
 
+### June 20th
+
+- Started on the second multi sensor board. this time only with 4 sensors
+with more space between them (3-8 mm). We have found this to be the best
+solution.
+- Finished the second multi sensor board.
+- Build a piece of tree to hold the other sensor board on the flipper machine
+- Modified src/pinball.ino to work with both the left and rigth flipper.
+this functinality has been there before, but during testing only the right
+flipper was active in the src code.
+- Tested it out to see it works (It does)
+- It could be upgraded, but only using 8 sensors todays results were perfect
+the sensors saved the ball about 11 times at max.
+- Finished the project and packed it town.
+- In the future this project will probably not be updated. Cause we will
+be working on other things. I will though probably upload some images of the 
+circuits, a photo and a video of the pinball beast operating in the future
+- Walked off into the summer sun with the great sattisfaction of having 
+worked on this project for a long time and seing it working and calling it
+done (for now)
 
 ### June 6th
 

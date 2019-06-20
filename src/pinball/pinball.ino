@@ -68,7 +68,27 @@ void loop() { //----------------------------------------------------------------
       count ++;
   }
 
-  //left flipper --------------------------------------------------------------------------------->
+  //right flipper ------------------------------------------------------------------------------->
+    Serial.println(digitalRead(leftsensor));
+    if (digitalRead(leftsensor) == HIGH) {
+        
+      Serial.println(digitalRead("ACTIVE"));
+      //activate flipper
+      digitalWrite(leftflipper, HIGH);
 
+      //this delay is needed by the flipper, if this delay wasnt here the flipper would not flip
+      delay(flipperUpTime);
+
+      //deactivate flipper
+      digitalWrite(leftflipper, LOW);
+
+      //delay to prevent the flipper from activating itself,
+      //this might have to be redone in the future for support for multiple sensors per flipper
+      //maybe using interrupts again
+      delay(flipperWaitTime);
+
+      //counts number of sensor activations
+      count ++;
+  }
 
 } //end of main loop ----------------------------------------------------------------------------------------------------------->
